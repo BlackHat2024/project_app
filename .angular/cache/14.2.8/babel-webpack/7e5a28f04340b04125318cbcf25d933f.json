@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  faibaseAPIKey: 'AIzaSyCtFUQWL0R00W3q9ayPD8kaPTrlw2qTEW0'\n};","map":null,"metadata":{},"sourceType":"module"}
