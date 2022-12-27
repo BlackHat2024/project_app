@@ -1,48 +1,53 @@
 import { User } from "../user.model";
 import * as AuthActions from './auth.action';
 
-export interface State{
-    user:User;
-    authError:string;
-    loading:boolean;
+export interface State {
+    user: User;
+    authError: string;
+    loading: boolean;
 }
 
 
-
-const initialState:State={
-    user:null,
-    authError:null,
-    loading:false
+const initialState: State = {
+    user: null,
+    authError: null,
+    loading: false
 };
 
-export function authReducer(state=initialState, action:AuthActions.AuthAction){
-    switch(action.type){
+export function authReducer(state = initialState, action: AuthActions.AuthAction) {
+    switch (action.type) {
         case AuthActions.AUTHENTICATE_SUCCESS:
-            const user=new User(action.payload.email,action.payload.userId,action.payload.token,action.payload.expirationDate);
+            const user = new User(action.payload.email, action.payload.userId, action.payload.token, action.payload.expirationDate);
 
-            return{
+            return {
                 ...state,
-                authError:null,
-                user:user,
-                loading:false
+                authError: null,
+                user: user,
+                loading: false
             }
         case AuthActions.LOGOUT:
-            return{
+            return {
                 ...state,
-                user:null
+                user: null
             }
         case AuthActions.LOGIN_START:
-            return{
+        case AuthActions.SIGNUP_START:
+            return {
                 ...state,
-                authError:null,
-                loading:true
+                authError: null,
+                loading: true
             }
         case AuthActions.AUTHENTICATE_FAIL:
-            return{
+            return {
                 ...state,
-                user:null,
-                authError:action.payload ,
-                loading:false
+                user: null,
+                authError: action.payload,
+                loading: false
+            }
+        case AuthActions.CLEAR_ERROR:
+            return {
+                ...state,
+                authError: null
             }
         default:
             return state;

@@ -15,4 +15,4 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule
   ]
 })
-export class AuthModule {}
+export class AuthModule { }

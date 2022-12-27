@@ -25,4 +25,4 @@ import { LoggingService } from '../logging.service';
   entryComponents: [AlertComponent],
   providers: [LoggingService]
 })
-export class SharedModule {}
+export class SharedModule { }
